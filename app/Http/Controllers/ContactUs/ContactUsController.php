@@ -8,15 +8,29 @@ use App\Http\Controllers\Controller;
 class ContactUsController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+    /*
+     * Process the Contact Us submission
      */
-    public function index()
+    public function postContact(Request $request)
     {
 
-        return view('pages.welcome');
+        // Validate form request
+        $this->validate($request, [
+            'name'      => 'required',
+            'email'     => 'required|email',
+            'message'   => 'required'
+        ]);
+
+        // Persist to DB
+
+        // Mail the info
+
+        // Flash a message
+
+        // Redirect back to homepage
+        return redirect('/');
+
+
 
     }
 

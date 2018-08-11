@@ -5,7 +5,9 @@
             <h2>Contact Guy Smiley</h2>
             <p>Remember Guy Smiley?  Yeah, he wants to hear from you.</p>
             <p class="bg-primary">
-                <form>
+
+                {!! Form::open(['url' => '/contactus']) !!}
+
                     <div class="col-md-6 form-line">
                         <div class="form-group">
                             <label for="exampleInputUsername">Your Name</label>
@@ -20,18 +22,19 @@
                             <input type="tel" class="form-control" id="contactInputPhone" placeholder="XXX-XXX-XXXX">
                         </div>
                     </div>
+
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for ="description"> Message</label>
                             <textarea  class="form-control" id="contactInputMessage" rows="8" placeholder="Enter Your Message"></textarea>
                         </div>
                         <div>
-
-                            <button type="button" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
+                            <button type="submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
                         </div>
-
                     </div>
-                </form>
+
+                {!! Form::close() !!}
+
             </p>
         </div>
     </div>
