@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('pages.welcome');
 });
 
-Route::post('/contactus', 'ContactUs\ContactUsController@postContact');
+Route::post('/contactus', 'ContactUs\ContactUsController@store');

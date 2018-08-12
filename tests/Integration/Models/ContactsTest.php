@@ -11,6 +11,16 @@ class ContactFormTest extends TestCase
 
     use RefreshDatabase;
 
+    /** @test */
+    public function it_stores_5_contacts()
+    {
+        factory(Contact::class, 5)->create();
+
+        $contacts = Contact::all();
+
+        $this->assertEquals($contacts->count(), 5);
+    }
+
     /** @test  */
     public function a_contact_submission_has_a_telephone_number()
     {

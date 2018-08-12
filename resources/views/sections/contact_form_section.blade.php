@@ -6,27 +6,42 @@
             <p>Remember Guy Smiley?  Yeah, he wants to hear from you.</p>
             <p class="bg-primary">
 
-                {!! Form::open(['url' => '/contactus']) !!}
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                    @foreach($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                    </div>
+                @endif
+
+                @if(Session::has('contact_success'))
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        <strong>Thank you, Mr. Smiley will be in touch!</strong>
+                    </div>
+                @endif
+
+                {!! Form::open(['url' => '/contactus#contact']) !!}
 
                     <div class="col-md-6 form-line">
                         <div class="form-group">
                             <label for="exampleInputUsername">Your Name</label>
-                            <input type="text" class="form-control" id="contactInputName" placeholder="Fran Frowny">
+                            {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'contactInputName', 'placeholder' => 'Fran Frowny']) !!}
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail">Your Email Address</label>
-                            <input type="email" class="form-control" id="contactInputEmail" placeholder="fran.frowny@example.com">
+                            {!! Form::email('email', null, ['class' => 'form-control', 'id' => 'contactInputEmail', 'placeholder' => 'fran.frowny@example.com']) !!}
                         </div>
                         <div class="form-group">
                             <label for="telephone">Your Phone Number (Optional)</label>
-                            <input type="tel" class="form-control" id="contactInputPhone" placeholder="XXX-XXX-XXXX">
+                            {!! Form::tel('phone', null, ['class' => 'form-control', 'id' => 'contactInputPhone', 'placeholder' => 'XXX-XXX-XXXX']) !!}
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for ="description"> Message</label>
-                            <textarea  class="form-control" id="contactInputMessage" rows="8" placeholder="Enter Your Message"></textarea>
+                            {!! Form::textarea('message', null, ['class' => 'form-control', 'id' => 'contactInputMessage', 'rows' => '8', 'placeholder' => 'Enter Your Message']) !!}
                         </div>
                         <div>
                             <button type="submit" class="btn btn-default submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>  Send Message</button>
